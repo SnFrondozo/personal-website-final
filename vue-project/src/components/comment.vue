@@ -120,16 +120,19 @@ onMounted(fetchComments);
 const addComment = async () => {
   if (!guestName.value || !guestComment.value) return;
 
-  const { error } = await supabase.from('comments').insert([
-    { name: guestName.value, message: guestComment.value }
-  ]);
+  const name = guestName.value;
+  const message = guestComment.value;
+
+  // Reset input fields immediately
+  guestName.value = '';
+  guestComment.value = '';
+
+  const { error } = await supabase.from('comments').insert([{ name, message }]);
 
   if (error) {
     console.error(error);
   } else {
-    fetchComments(); // Refresh comments
-    guestName.value = '';
-    guestComment.value = '';
+    fetchComments(); // Refresh comments list
   }
 };
 </script>
