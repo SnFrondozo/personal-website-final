@@ -16,33 +16,38 @@
     <!-- Sections -->
     <section v-if="currentSection === 'about'">
       <h2>About Me</h2>
-      <p>Hello! I'm a passionate developer with a love for technology and creativity.</p>
+      <p>Hello my name Sondrick Frondozo im a 3rd YEAR student taking Bachelor of Science in Information Technology.</p>
+      <p>I am 23 years old and i love playing video games and reading novels and manhwa!</p>
+      <p>Nice to Meet you!!!!!</p>
     </section>
 
     <section v-if="currentSection === 'education'">
       <h2>Education</h2>
       <p>Bachelor of Science in Information Technology</p>
-      <p>Certified in [Relevant Certifications]</p>
     </section>
 
     <section v-if="currentSection === 'experience'">
       <h2>IT Experience</h2>
-      <p>Worked on projects involving web and mobile development, including [specific technologies].</p>
+      <p>Java</p>
+      <p>HTML,CSS,Javascript</p>
+      <p>Mobile Application (Bamboo Warriors PH- Group Project)</p>
+      <p>MYSQL</p>
     </section>
 
     <section v-if="currentSection === 'hobbies'">
       <h2>Hobbies & Interests</h2>
-      <p>Gaming, coding, reading, traveling, and exploring new technologies.</p>
+      <p>Gaming(Valorant,League of legends,Dota2,Any Gacha games)</p>
+      <p>Music(Ado,Yoasobi,Nightcore Music,)</p>
+      <p>Novel(The Beginning after the end,Omniscient Reader's Viewpoint)</p>
     </section>
 
     <section v-if="currentSection === 'goals'">
-      <h2>6 Goals In Life / Dreams</h2>
+      <h2> Goals In Life / Dreams</h2>
+      <p>To Graduate on College</p>
       <p>Become a successful software developer</p>
-      <p>Contribute to open-source projects</p>
-      <p>Build my own tech startup</p>
       <p>Travel the world</p>
       <p>Help others learn coding</p>
-      <p>Create a game or app that impacts millions</p>
+      <p>Learn to play piano/guitar</p>
     </section>
 
     <section v-if="currentSection === 'gallery'">
@@ -60,13 +65,16 @@
 import game1 from "@/gallery/game1.png";
 import game2 from "@/gallery/game2.png";
 import game3 from "@/gallery/game3.png";
+import game4 from "@/gallery/game4.png";
+import game5 from "@/gallery/game5.png";
+import game6 from "@/gallery/game6.png";
 
 export default {
   name: "Portfolio",
   data() {
     return {
       currentSection: "about",
-      gameImages: [game1, game2, game3],
+      gameImages: [game1, game2, game3, game4, game5, game6],
       currentImageIndex: 0,
     };
   },
