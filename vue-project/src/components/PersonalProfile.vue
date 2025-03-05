@@ -1,13 +1,10 @@
 <template>
   <div class="container">
-    <!-- Navigation Bar-->
+    <!-- Navigation Bar -->
     <div class="nav-bar">
-      <button @click="showSection('about')">About</button>
-      <button @click="showSection('education')">Education</button>
-      <button @click="showSection('experience')">IT Experience</button>
-      <button @click="showSection('hobbies')">Hobbies & Interests</button>
-      <button @click="showSection('goals')">Goals</button>
-      <button @click="showSection('gallery')">Game Gallery</button>
+      <button v-for="section in sections" :key="section.id" @click="showSection(section.id)">
+        {{ section.label }}
+      </button>
     </div>
 
     <!-- Welcome Heading -->
@@ -16,42 +13,48 @@
     <!-- Sections -->
     <section v-if="currentSection === 'about'">
       <h2>About Me</h2>
-      <p>Hello my name Sondrick Frondozo im a 3rd YEAR student taking Bachelor of Science in Information Technology.</p>
-      <p>I am 23 years old and i love playing video games and reading novels and manhwa!</p>
-      <p>Nice to Meet you!!!!!</p>
+      <p>Hello! My name is <strong>Sondrick Frondozo</strong>. I'm a 3rd-year Bachelor of Science in Information Technology student.</p>
+      <p>I am 23 years old, and I love **playing video games** and **reading novels & manhwa**!</p>
+      <p>Nice to meet you! 🎮📖</p>
     </section>
 
     <section v-if="currentSection === 'education'">
       <h2>Education</h2>
-      <p>Bachelor of Science in Information Technology</p>
+      <p>📚 <strong>Bachelor of Science in Information Technology</strong></p>
     </section>
 
     <section v-if="currentSection === 'experience'">
       <h2>IT Experience</h2>
-      <p>Java</p>
-      <p>HTML,CSS,Javascript</p>
-      <p>Mobile Application (Bamboo Warriors PH- Group Project)</p>
-      <p>MYSQL</p>
+      <ul>
+        <li>✅ Java</li>
+        <li>✅ HTML, CSS, JavaScript</li>
+        <li>✅ Mobile App Dev (Bamboo Warriors PH - Group Project)</li>
+        <li>✅ MySQL</li>
+      </ul>
     </section>
 
     <section v-if="currentSection === 'hobbies'">
       <h2>Hobbies & Interests</h2>
-      <p>Gaming(Valorant,League of legends,Dota2,Any Gacha games)</p>
-      <p>Music(Ado,Yoasobi,Nightcore Music,)</p>
-      <p>Novel(The Beginning after the end,Omniscient Reader's Viewpoint)</p>
+      <ul>
+        <li>🎮 Gaming (Valorant, League of Legends, Dota 2, Gacha Games)</li>
+        <li>🎶 Music (Ado, Yoasobi, Nightcore)</li>
+        <li>📖 Novels (The Beginning After The End, Omniscient Reader’s Viewpoint)</li>
+      </ul>
     </section>
 
     <section v-if="currentSection === 'goals'">
-      <h2> Goals In Life / Dreams</h2>
-      <p>To Graduate on College</p>
-      <p>Become a successful software developer</p>
-      <p>Travel the world</p>
-      <p>Help others learn coding</p>
-      <p>Learn to play piano/guitar</p>
+      <h2>Life Goals & Dreams</h2>
+      <ul>
+        <li>🎓 Graduate from College</li>
+        <li>💻 Become a Successful Software Developer</li>
+        <li>🌍 Travel the World</li>
+        <li>👨‍🏫 Help Others Learn Coding</li>
+        <li>🎹 Learn to Play Piano/Guitar</li>
+      </ul>
     </section>
 
     <section v-if="currentSection === 'gallery'">
-      <h2>Game Gallery</h2>
+      <h2>🎮 Game Gallery</h2>
       <div class="gallery">
         <button @click="prevImage" class="nav-button">❮ Prev</button>
         <img :src="gameImages[currentImageIndex]" alt="Game Image" class="gallery-image"/>
@@ -76,6 +79,14 @@ export default {
       currentSection: "about",
       gameImages: [game1, game2, game3, game4, game5, game6],
       currentImageIndex: 0,
+      sections: [
+        { id: "about", label: "About" },
+        { id: "education", label: "Education" },
+        { id: "experience", label: "IT Experience" },
+        { id: "hobbies", label: "Hobbies & Interests" },
+        { id: "goals", label: "Goals" },
+        { id: "gallery", label: "Game Gallery" }
+      ]
     };
   },
   methods: {
@@ -91,10 +102,11 @@ export default {
   },
 };
 </script>
+
 <style>
 /* General Styling */
 body {
-  background-color: #000;
+  background-color: #0a0a0a;
   color: #ff4444;
   font-family: "Poppins", sans-serif;
   text-align: center;
@@ -107,7 +119,6 @@ body {
   max-width: 90%;
   margin: 30px auto;
   padding: 20px;
-  text-align: center;
 }
 
 /* Navigation Bar */
@@ -127,17 +138,12 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
 .nav-bar button:hover {
   background-color: #cc0000;
-}
-
-/* Welcome Title */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  transform: scale(1.1);
 }
 
 /* Sections */
@@ -146,18 +152,20 @@ section {
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-  width: 95%;
   max-width: 900px;
   margin: 20px auto;
 }
 
-h2 {
-  font-size: 2rem;
+h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
-p {
-  font-size: 1.3rem;
-  line-height: 1.6;
+h2 {
+  font-size: 2rem;
+  color: #ffcccb;
+  text-shadow: 0 0 10px rgba(255, 100, 100, 0.7);
 }
 
 /* Game Gallery */
@@ -166,7 +174,6 @@ p {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .gallery-image {
@@ -175,7 +182,11 @@ p {
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
 }
 
 .nav-button {
@@ -186,59 +197,11 @@ p {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
 .nav-button:hover {
   background-color: #cc0000;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-
-  .nav-bar {
-    flex-direction: column;
-  }
-
-  .nav-bar button {
-    width: 100%;
-    padding: 18px;
-    font-size: 22px;
-  }
-
-  section {
-    width: 100%;
-    padding: 30px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  p {
-    font-size: 1.2rem;
-  }
-
-  .gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .gallery-image {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  .nav-button {
-    padding: 10px 15px;
-    font-size: 18px;
-  }
+  transform: scale(1.1);
 }
 </style>
